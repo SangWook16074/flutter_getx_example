@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_getx_example/src/binding/init_binding.dart';
+import 'package:get/get.dart';
 
 import 'src/app.dart';
 
@@ -12,8 +14,9 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: App(),
+    return GetMaterialApp(
+      home: const App(),
+      initialBinding: InitBinding(),
     );
   }
 }

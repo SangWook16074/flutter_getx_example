@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_getx_example/src/controller/count_controller.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 
-class App extends StatelessWidget {
+class App extends GetView<CountController> {
   const App({super.key});
 
   @override
@@ -8,16 +10,23 @@ class App extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text(
-              '0',
-              style: TextStyle(fontSize: 40),
+            Obx(
+              () => Text(
+                '${controller.count}',
+                style: const TextStyle(fontSize: 40),
+              ),
             ),
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                ElevatedButton(onPressed: () {}, child: const Icon(Icons.add)),
                 ElevatedButton(
-                    onPressed: () {}, child: const Icon(Icons.remove)),
+                    onPressed: controller.increase,
+                    child: const Icon(Icons.add)),
+                ElevatedButton(
+                    onPressed: controller.decrease,
+                    child: const Icon(Icons.remove)),
               ],
             )
           ],
